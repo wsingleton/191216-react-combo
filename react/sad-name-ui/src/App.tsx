@@ -1,10 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import {FirstComponent} from './components/first-component/FirstComponent'
+import { FirstComponent } from './components/first-component/FirstComponent'
 import { SecondComponent } from './components/second-component/SecondComponent';
 import { ClickerComponent } from './components/clicker-component/ClickerComponent';
 import { PropComponent } from './components/prop-component/PropComponent';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { LifecycleComponent } from './components/lifecycle-component/LifecycleComponent';
+import { ChuckNorrisComponent } from './components/chuck-norris-component/ChuckNorrisComponent';
 
 //this is the root of all the components that we will make
 //two rules to being a component
@@ -13,24 +15,26 @@ import { PropComponent } from './components/prop-component/PropComponent';
 const App: React.FC = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <FirstComponent/>
-      <SecondComponent/>
-      <ClickerComponent/>
-      <PropComponent name={'Alec'} color={'grey'}/>
+      {/* to use react router, there is one base tag all routes must be contained in
+      that tag is a component called Router */}
+      <Router>
+        {/* With router we will always pass in three objects as props
+        history, match, location */}
+        {/* inside of a router we are going to have routes
+        routes by default will match inclusively
+        /clicker that would match '/' '/c' '/cl' '/cli' ... */}
+        <Switch>
+          {/* What the switch does is allow only a single route inside to be rendered at one time */}
+          <Route path='/chucknorris' component={ChuckNorrisComponent}/>
+          <Route path='/lifecycle' component={LifecycleComponent}/>
+          <Route path='/second' component={SecondComponent} />
+          <Route path='/clicker' component={ClickerComponent} />
+          <Route path='/props' render={() => <PropComponent name={'Alec'} color={'grey'} />} />
+          {/* the syntax for a component with props, is to use the render property with an arrow function and the component with its props */}
+          <Route path='/' component={FirstComponent} />
+        </Switch>
+      </Router>
+
     </div>
   );
 }
