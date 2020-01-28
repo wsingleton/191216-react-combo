@@ -7,17 +7,24 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+import { WINDOW_LOC } from "../main.js";
+import { state } from "../util/state.js";
 export class LoginComponent {
-    constructor(userService) {
+    constructor(userService, router) {
         this.userService = userService;
+        this.router = router;
         this.template = `
     <div class="login-form">
         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
         <label for="username-cred" class="sr-only">Username</label>
-        <input type="text" id="username-cred" class="form-control" placeholder="Username" required autofocus>
+        <input type="text" id="username-cred" class="form-control" placeholder="Username" autofocus>
+        <br/>
         <label for="password-cred" class="sr-only">Password</label>
-        <input type="password" id="password-cred" class="form-control" placeholder="Password" required>
+        <input type="password" id="password-cred" class="form-control" placeholder="Password">
+        <br/>
         <button class="btn btn-lg btn-primary btn-block" id="submit-creds">Sign in</button>
+        <br/>
+        <button class="btn btn-lg btn-secondary btn-block" id="nav-register">Create An Account</button>
         <br>
         <div hidden class="alert alert-danger text-center" id="alert-msg" role="alert">
             Invalid Credentials!
@@ -27,15 +34,24 @@ export class LoginComponent {
     `;
         this.render = () => {
             console.log('LoginComponent.render() invoked!');
+            let url = `${WINDOW_LOC}login`;
+            window.history.pushState({ key: url }, 'Login Your Quizzard Account!', url);
             document.getElementById('root').innerHTML = this.template;
             document.getElementById('submit-creds').addEventListener('click', this.login);
+            document.getElementById('password-cred').addEventListener('keydown', (e) => {
+                if (e.keyCode === 13)
+                    this.login();
+            });
+            document.getElementById('nav-register').addEventListener('click', () => {
+                this.router.navigate('/register');
+            });
         };
         this.login = () => __awaiter(this, void 0, void 0, function* () {
-            let username = document.getElementById('username-cred').value;
-            let password = document.getElementById('password-cred').value;
+            let username = document.getElementById('username-cred').value || '';
+            let password = document.getElementById('password-cred').value || '';
             let authUser = yield this.userService.authenticate({ username, password });
-            console.log(authUser);
+            state.currentUser = authUser;
+            this.router.navigate('/dashboard');
         });
-        console.log('LoginComponent initialized!');
     }
 }

@@ -14,7 +14,15 @@ export class UserService {
             console.log('UserService.authenticate() invoked!');
             let resp = yield fetch(`${API_URL}/auth`, {
                 method: 'POST',
-                body: JSON.stringify(Object.assign({}, creds))
+                body: JSON.stringify(creds)
+            });
+            return yield resp.json();
+        });
+        this.register = (user) => __awaiter(this, void 0, void 0, function* () {
+            console.log('UserService.register() invoked!');
+            let resp = yield fetch(`${API_URL}/users`, {
+                method: 'POST',
+                body: JSON.stringify(user)
             });
             return yield resp.json();
         });
