@@ -1,5 +1,4 @@
 import { UserService } from "../services/user.service.js";
-import { Credentials } from "../models/credentials.js";
 import { View } from "./view.js";
 import { Router } from "../util/router.js";
 import { WINDOW_LOC } from "../main.js";
