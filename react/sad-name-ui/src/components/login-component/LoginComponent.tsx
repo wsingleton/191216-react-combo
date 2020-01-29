@@ -44,7 +44,7 @@ export class LoginComponent extends React.Component<any, ILoginState>{
         let loginmessage = await apiLogin(this.state.username, this.state.password)
         this.setState({
             ...this.state,
-            loginMessage:loginmessage
+            loginMessage: loginmessage
         })
     }
 
@@ -55,7 +55,8 @@ export class LoginComponent extends React.Component<any, ILoginState>{
                     <FormGroup row>
                         <Label for="exampleUsername" sm={2}>Username</Label>
                         <Col sm={10}>
-                            <Input type="text"
+                            <Input required
+                                type="text"
                                 name="Username"
                                 id="exampleUsername"
                                 placeholder="put username here"
@@ -67,7 +68,8 @@ export class LoginComponent extends React.Component<any, ILoginState>{
                     <FormGroup row>
                         <Label for="examplePassword" sm={2}>Password</Label>
                         <Col sm={10}>
-                            <Input type="password"
+                            <Input required
+                                type="password"
                                 name="password"
                                 id="examplePassword"
                                 placeholder="put password here"
