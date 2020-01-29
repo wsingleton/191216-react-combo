@@ -1,6 +1,6 @@
 import React, { SyntheticEvent } from 'react';
 import { Form, FormGroup, Label, Col, Input, Button } from 'reactstrap';
-import { apiLogin } from '../../remote/chuck-norris-clients/garden-book/garden-book-clients';
+import { apiLogin } from '../../remote/garden-book/garden-book-clients';
 
 interface ILoginState {
     username:string,
@@ -38,9 +38,9 @@ export class LoginComponent extends React.Component<any, ILoginState> {
         })
     }
 
-    submitLogin = (event:SyntheticEvent) => {
+    submitLogin = async (event:SyntheticEvent) => {
         event.preventDefault();
-        let loginmessage = apiLogin(this.state.username, this.state.password);
+        let loginmessage = await apiLogin(this.state.username, this.state.password);
         this.setState({
             ...this.state,
             loginMessage:loginmessage
@@ -55,7 +55,8 @@ export class LoginComponent extends React.Component<any, ILoginState> {
                 <FormGroup row>
                     <Label for="exampleUsername" sm={2}>Username</Label>
                     <Col sm={10}>
-                        <Input type="text" 
+                        <Input required 
+                        type="text" 
                         name="Username" 
                         id="exampleUsername" 
                         placeholder="Put Username Here" 
@@ -67,7 +68,8 @@ export class LoginComponent extends React.Component<any, ILoginState> {
                 <FormGroup row>
                     <Label for="examplePassword" sm={2}>Password</Label>
                     <Col sm={10}>
-                        <Input type="password" 
+                        <Input required
+                        type="password" 
                         name="password" 
                         id="examplePassword" 
                         placeholder="Put Password Here" 
