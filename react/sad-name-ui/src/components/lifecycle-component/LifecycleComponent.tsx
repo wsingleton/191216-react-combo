@@ -18,7 +18,7 @@ export class LifecycleComponent extends React.Component<any,any>{
 
     componentDidUpdate(){
         //you are allowed to put setstate in componentDidUpdate, but it has to be conditional
-        let someVar = false;
+        //let someVar = false;
         
             this.setState({
                 ...this.state,

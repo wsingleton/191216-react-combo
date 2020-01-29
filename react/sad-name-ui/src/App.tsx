@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { FirstComponent } from './components/first-component/FirstComponent'
 import { SecondComponent } from './components/second-component/SecondComponent';
 import { ClickerComponent } from './components/clicker-component/ClickerComponent';
@@ -7,6 +8,7 @@ import { PropComponent } from './components/prop-component/PropComponent';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { LifecycleComponent } from './components/lifecycle-component/LifecycleComponent';
 import { ChuckNorrisComponent } from './components/chuck-norris-component/ChuckNorrisComponent';
+import { LoginComponent } from './components/login-component/LoginComponent';
 
 //this is the root of all the components that we will make
 //two rules to being a component
@@ -25,6 +27,7 @@ const App: React.FC = () => {
         /clicker that would match '/' '/c' '/cl' '/cli' ... */}
         <Switch>
           {/* What the switch does is allow only a single route inside to be rendered at one time */}
+          <Route path='/login' component={LoginComponent}/>
           <Route path='/chucknorris' component={ChuckNorrisComponent}/>
           <Route path='/lifecycle' component={LifecycleComponent}/>
           <Route path='/second' component={SecondComponent} />
