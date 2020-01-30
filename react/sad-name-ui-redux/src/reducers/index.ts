@@ -4,6 +4,7 @@ import { loginReducer } from "./login-reducer";
 // describe the data we want from the login component
 export interface IUserState {
     currentUser:any
+    loginMessage:string
 }
 
 
@@ -17,5 +18,5 @@ export interface IState {
 // and turn them into one super reducer that represents all of state
 export const state = combineReducers<IState>({
     userState:loginReducer,
-    
+
 })

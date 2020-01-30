@@ -7,6 +7,7 @@ import { updateCurrentUser } from '../../action-mappers/login-actions'
 const mapStateToProps = (state:IState) => {
     return {
         //all of the state that goes to login component goes inside here
+        loginMessage:state.userState.loginMessage
     }
 }
 
