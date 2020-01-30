@@ -2,7 +2,8 @@ import { apiLogin } from "../remote/garden-book/garden-book-clients"
 
 
 export const loginTypes = {
-    SUCCESSFUL_LOGIN: 'LOGIN_SUCCESSFUL_LOGIN'
+    SUCCESSFUL_LOGIN: 'LOGIN_SUCCESSFUL_LOGIN',
+    UNSUCCESSFUL_LOGIN: 'LOGIN_UNSUCCESSFUL_LOGIN'
 }
 
 
@@ -13,6 +14,13 @@ export const updateCurrentUser = (username:string, password:string) => async (di
             type:loginTypes.SUCCESSFUL_LOGIN,
             payload:{
                 currentUser:response.body
+            }
+        })
+    } else{
+        dispatch({
+            type:loginTypes.UNSUCCESSFUL_LOGIN,
+            payload: {
+                loginMessage:response.loginMessage
             }
         })
     }
