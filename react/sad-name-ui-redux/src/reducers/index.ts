@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import { loginReducer } from "./login-reducer";
+import { pokemonReducer } from "./pokemon-reducer";
 
 // describe the data we want from the login component
 export interface IUserState {
@@ -7,10 +8,16 @@ export interface IUserState {
     loginMessage:string
 }
 
+//this is the data we want from the pokemon state
+export interface IPokemonState {
+    allPokemon:any[]
+}
+
 
 // it will containe subinterfaces that represent different parts of state
 export interface IState {
     userState : IUserState
+    pokemonState: IPokemonState
 }
 
 
@@ -18,5 +25,6 @@ export interface IState {
 // and turn them into one super reducer that represents all of state
 export const state = combineReducers<IState>({
     userState:loginReducer,
+    pokemonState:pokemonReducer
 
 })

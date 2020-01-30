@@ -1,5 +1,5 @@
 import React from 'react';
-import { CarouselItem, CarouselCaption, Card, CardBody, CardTitle, CardSubtitle, CardText } from 'reactstrap';
+import {  Card, CardBody, CardTitle, CardSubtitle, CardText } from 'reactstrap';
 
 interface IPokemonDisplayProps {
     id: number

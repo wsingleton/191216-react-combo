@@ -1,59 +1,63 @@
 import React from 'react';
 import { PokemonDisplayComponent } from './pokemon-display-component/PokemonDisplayComponent';
 import { getMultiplePokemon, getPokemonByUrl } from '../../remote/poke-api-clients/get-pokemon';
-import { CardDeck, CardColumns } from 'reactstrap';
+import { CardColumns, Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 import { Redirect } from 'react-router';
 
 interface IPokemonState {
-    allPokemon: any[],
-    activeIndex: number
+    limit: number
+    offset: number
 }
 
-export class PokemonComponent extends React.Component<any, IPokemonState> {
+interface IPokemonProps {
+    user: any
+    allPokemon: any[],
+    getAllPokemon: (l: number, o: number) => void
+}
+
+export class PokemonComponent extends React.Component<IPokemonProps, IPokemonState> {
     constructor(props: any) {
         super(props)
         this.state = {
-            allPokemon: [],
-            activeIndex: 0
+            limit: 18,
+            offset: 0
         }
     }
 
 
     async componentDidMount() {
+        if (this.props.user) {
+            if (this.props.allPokemon.length === 0) {
+                this.props.getAllPokemon(18, 0)
+            }
+        }
+    }
 
-        let pokeLinks: any = await getMultiplePokemon(18, 0)
-
-        console.log(pokeLinks);
-        let pokemon = await Promise.all(pokeLinks.results.map((objects: any) => {
-            return getPokemonByUrl(objects.url)
-        }))
-        console.log(pokemon);
-
+    pageTurnForward = () => {
+        let newOffset = this.state.offset + this.state.limit
+        this.props.getAllPokemon(this.state.limit, newOffset)
         this.setState({
             ...this.state,
-            allPokemon: pokemon
+            offset: newOffset
         })
     }
 
-    next = () => {
-        this.setState({
-            ...this.state,
-            activeIndex: (this.state.activeIndex + 1) % this.state.allPokemon.length
-        })
-    }
+    pageTurnBackwards = () => {
+        if (this.state.offset > 0) {
 
-    previous = () => {
-        let index = this.state.activeIndex === 0 ? this.state.allPokemon.length - 1 : this.state.activeIndex - 1
-        this.setState({
-            ...this.state,
-            activeIndex: index
-        })
-    }
 
+            let newOffset = this.state.offset - this.state.limit
+            this.props.getAllPokemon(this.state.limit, newOffset)
+            this.setState({
+                ...this.state,
+                offset: newOffset
+            })
+        }
+    }
 
     render() {
 
-        const displayList: PokemonDisplayComponent[] = this.state.allPokemon.map<any>((pokemon: any) => {
+        const displayList: PokemonDisplayComponent[] = this.props.allPokemon.map<any>((pokemon: any) => {
             return <PokemonDisplayComponent id={pokemon.id}
                 name={pokemon.name}
                 height={pokemon.height}
@@ -62,23 +66,37 @@ export class PokemonComponent extends React.Component<any, IPokemonState> {
             />
         })
 
-        if(this.props.user){
+        if (this.props.user) {
             return (
                 <>
                     <h3>Welcome Trainer {this.props.user && this.props.user.name}</h3>
                     <CardColumns>
                         {displayList}
                     </CardColumns>
+                    <Pagination aria-label="Page navigation example">
+                        <PaginationItem disabled>
+                            <PaginationLink first />
+                        </PaginationItem>
+                        <PaginationItem disabled={!this.state.offset} onClick={this.pageTurnBackwards}>
+                            <PaginationLink previous />
+                        </PaginationItem>
+                        <PaginationItem onClick={this.pageTurnForward}>
+                            <PaginationLink next />
+                        </PaginationItem>
+                        <PaginationItem>
+                            <PaginationLink last />
+                        </PaginationItem>
+                    </Pagination>
                 </>
-    
+
             )
-        }else {
+        } else {
             return (
-                <Redirect to='/state/login'/>
+                <Redirect to='/login' />
             )
         }
 
-        
+
     }
 
 }

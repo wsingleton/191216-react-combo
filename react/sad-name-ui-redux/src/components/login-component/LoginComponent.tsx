@@ -1,6 +1,5 @@
 import React, { SyntheticEvent } from 'react';
 import { Form, Label, Col, Input, FormGroup, Button } from 'reactstrap';
-import { apiLogin } from '../../remote/garden-book/garden-book-clients';
 import { Link } from 'react-router-dom';
 
 interface ILoginState {
