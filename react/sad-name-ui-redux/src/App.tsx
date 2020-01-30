@@ -3,11 +3,11 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FirstComponent } from './components/first-component/FirstComponent'
 import { SecondComponent } from './components/second-component/SecondComponent';
-import { ClickerComponent } from './components/clicker-component/ClickerComponent';
+import  ClickerComponent  from './components/clicker-component/ClickerContainer';
 import { PropComponent } from './components/prop-component/PropComponent';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { LifecycleComponent } from './components/lifecycle-component/LifecycleComponent';
-import { ChuckNorrisComponent } from './components/chuck-norris-component/ChuckNorrisComponent';
+import  ChuckNorrisComponent  from './components/chuck-norris-component/ChuckNorrisContainer';
 import LoginComponent  from './components/login-component/LoginContainer';
 import  PokemonComponent  from './components/pokemon-component/PokemonContainer';
 import { NavbarComponent } from './components/navbar-component/NavbarComponent';

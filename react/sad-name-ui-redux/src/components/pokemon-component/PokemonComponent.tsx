@@ -63,6 +63,7 @@ export class PokemonComponent extends React.Component<IPokemonProps, IPokemonSta
                 height={pokemon.height}
                 weight={pokemon.weight}
                 types={[pokemon.types[0].type.name, pokemon.types[1] && pokemon.types[1].type.name]}
+                key={pokemon.id}//don't use the position in the list
             />
         })
 
