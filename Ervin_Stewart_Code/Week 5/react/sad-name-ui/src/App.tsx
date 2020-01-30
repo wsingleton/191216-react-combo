@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { FirstComponent } from './component/first-component/FirstComponent';
 import { SecondComponent } from './component/second-component/SecondComponent';
@@ -7,6 +8,7 @@ import { ClickerComponent } from './component/clicker-component/ClickerComponent
 import { PropComponent } from './component/prop-component/PropComponent';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { LifeCycleComponent } from './component/life-cycle-component/LifeCycleComponent';
+import { LoginComponent } from './component/login-component/LoginComponent';
 
 const App: React.FC = () => {
   return (
@@ -28,7 +30,8 @@ const App: React.FC = () => {
       </header>
       
       <Router>
-      <Switch>  
+      <Switch>
+        <Route path='/login' component={LoginComponent}/>  
       <Route path='/lifecycle' component={LifeCycleComponent}/>
       <Route path='/second' component={SecondComponent}/>
       <Route path='/Clicker' component={ClickerComponent}/>
