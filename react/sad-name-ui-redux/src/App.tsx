@@ -8,9 +8,8 @@ import { PropComponent } from './components/prop-component/PropComponent';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { LifecycleComponent } from './components/lifecycle-component/LifecycleComponent';
 import { ChuckNorrisComponent } from './components/chuck-norris-component/ChuckNorrisComponent';
-import { LoginComponent } from './components/login-component/LoginComponent';
+import LoginComponent  from './components/login-component/LoginContainer';
 import { PokemonComponent } from './components/pokemon-component/PokemonComponent';
-import { StatePassingComponent } from './components/state-passing-component/StatePassingComponent';
 import { NavbarComponent } from './components/navbar-component/NavbarComponent';
 import { Provider } from 'react-redux';
 import { store } from './Store';
@@ -36,7 +35,7 @@ const App: React.FC = () => {
         /clicker that would match '/' '/c' '/cl' '/cli' ... */}
           <Switch>
             {/* What the switch does is allow only a single route inside to be rendered at one time */}
-            <Route path='/state' component={StatePassingComponent} />
+            <Route path='/login' component={LoginComponent} />
             <Route path='/chucknorris' component={ChuckNorrisComponent} />
             <Route path='/lifecycle' component={LifecycleComponent} />
             <Route path='/second' component={SecondComponent} />
