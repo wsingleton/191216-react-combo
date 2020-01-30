@@ -9,8 +9,12 @@ interface ILoginState {
     loginMessage: string
 }
 
+interface ILoginProps {
+    updateCurrentUser: (u:string, p:string) => void
+}
 
-export class LoginComponent extends React.Component<any, ILoginState>{
+
+export class LoginComponent extends React.Component<ILoginProps, ILoginState>{
     constructor(props: any) {
         super(props)
         this.state = {
@@ -44,12 +48,7 @@ export class LoginComponent extends React.Component<any, ILoginState>{
 
     submitLogin = async (event: SyntheticEvent) => {
         event.preventDefault()
-        let response:any = await apiLogin(this.state.username, this.state.password)
-        this.props.updateUser(response.body)
-        this.setState({
-            ...this.state,
-            loginMessage: response.loginMessage
-        })
+        this.props.updateCurrentUser(this.state.username,this.state.password)
     }
 
     render() {
