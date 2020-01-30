@@ -1,6 +1,7 @@
 import React, { SyntheticEvent } from 'react';
 import { Form, Label, Col, Input, FormGroup, Button } from 'reactstrap';
 import { apiLogin } from '../../remote/garden-book/garden-book-clients';
+import { Link } from 'react-router-dom';
 
 interface ILoginState {
     username: string
@@ -41,10 +42,11 @@ export class LoginComponent extends React.Component<any, ILoginState>{
 
     submitLogin = async (event: SyntheticEvent) => {
         event.preventDefault()
-        let loginmessage = await apiLogin(this.state.username, this.state.password)
+        let response:any = await apiLogin(this.state.username, this.state.password)
+        this.props.updateUser(response.body)
         this.setState({
             ...this.state,
-            loginMessage: loginmessage
+            loginMessage: response.loginMessage
         })
     }
 
@@ -80,6 +82,7 @@ export class LoginComponent extends React.Component<any, ILoginState>{
                     <Button color="danger">Login</Button>
                 </Form>
                 <p>{this.state.loginMessage}</p>
+                <Link to='/pokemon'>No NavBar yet</Link>
             </div>
         )
     }

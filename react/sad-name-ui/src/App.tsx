@@ -10,6 +10,7 @@ import { LifecycleComponent } from './components/lifecycle-component/LifecycleCo
 import { ChuckNorrisComponent } from './components/chuck-norris-component/ChuckNorrisComponent';
 import { LoginComponent } from './components/login-component/LoginComponent';
 import { PokemonComponent } from './components/pokemon-component/PokemonComponent';
+import { StatePassingComponent } from './components/state-passing-component/StatePassingComponent';
 
 //this is the root of all the components that we will make
 //two rules to being a component
@@ -28,8 +29,7 @@ const App: React.FC = () => {
         /clicker that would match '/' '/c' '/cl' '/cli' ... */}
         <Switch>
           {/* What the switch does is allow only a single route inside to be rendered at one time */}
-          <Route path='/pokemon' component={PokemonComponent}/>
-          <Route path='/login' component={LoginComponent}/>
+          <StatePassingComponent/>
           <Route path='/chucknorris' component={ChuckNorrisComponent}/>
           <Route path='/lifecycle' component={LifecycleComponent}/>
           <Route path='/second' component={SecondComponent} />
