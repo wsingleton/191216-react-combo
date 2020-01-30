@@ -9,6 +9,7 @@ interface ILoginState {
     loginMessage: string
 }
 
+
 export class LoginComponent extends React.Component<any, ILoginState>{
     constructor(props: any) {
         super(props)
@@ -20,6 +21,7 @@ export class LoginComponent extends React.Component<any, ILoginState>{
         //by putting event binding and data binding together, we achieve something called two way data binding
         //this is where the user can update state and if state is updated the user sees the change
     }
+    
     //this is an example of event binding
     //we take an event created by a user, and use it to update data in our state
     updateUsername = (event: any) => {

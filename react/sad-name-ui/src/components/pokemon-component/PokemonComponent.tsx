@@ -2,6 +2,7 @@ import React from 'react';
 import { PokemonDisplayComponent } from './pokemon-display-component/PokemonDisplayComponent';
 import { getMultiplePokemon, getPokemonByUrl } from '../../remote/poke-api-clients/get-pokemon';
 import { CardDeck, CardColumns } from 'reactstrap';
+import { Redirect } from 'react-router';
 
 interface IPokemonState {
     allPokemon: any[],
@@ -61,15 +62,23 @@ export class PokemonComponent extends React.Component<any, IPokemonState> {
             />
         })
 
-        return (
-            <>
-                <h3>Welcome Trainer {this.props.user && this.props.user.name}</h3>
-                <CardColumns>
-                    {displayList}
-                </CardColumns>
-            </>
+        if(this.props.user){
+            return (
+                <>
+                    <h3>Welcome Trainer {this.props.user && this.props.user.name}</h3>
+                    <CardColumns>
+                        {displayList}
+                    </CardColumns>
+                </>
+    
+            )
+        }else {
+            return (
+                <Redirect to='/state/login'/>
+            )
+        }
 
-        )
+        
     }
 
 }

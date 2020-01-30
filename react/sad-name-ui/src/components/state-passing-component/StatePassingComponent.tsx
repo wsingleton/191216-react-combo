@@ -21,8 +21,8 @@ export class StatePassingComponent extends React.Component<any,any> {
     render(){
         return(
             <>
-            <Route path='/pokemon' render={()=><PokemonComponent user={this.state.currentUser}/>}/>
-            <Route path='/login' render={()=><LoginComponent updateUser={this.updateUser}/>}/>
+            <Route path={`${this.props.match.path}/pokemon`} render={()=><PokemonComponent user={this.state.currentUser}/>}/>
+            <Route path={`${this.props.match.path}/login`} render={()=><LoginComponent updateUser={this.updateUser}/>}/>
             </>
         )
     }
