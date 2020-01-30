@@ -6,11 +6,12 @@ import { Link } from 'react-router-dom';
 interface ILoginState {
     username: string
     password: string
-    loginMessage: string
+    
 }
 
 interface ILoginProps {
     updateCurrentUser: (u:string, p:string) => void
+    loginMessage: string
 }
 
 
@@ -20,7 +21,6 @@ export class LoginComponent extends React.Component<ILoginProps, ILoginState>{
         this.state = {
             username: '',
             password: '',
-            loginMessage: ''
         }
         //by putting event binding and data binding together, we achieve something called two way data binding
         //this is where the user can update state and if state is updated the user sees the change
@@ -82,7 +82,7 @@ export class LoginComponent extends React.Component<ILoginProps, ILoginState>{
                     </FormGroup>
                     <Button color="danger">Login</Button>
                 </Form>
-                <p>{this.state.loginMessage}</p>
+                <p>{this.props.loginMessage}</p>
                 <Link to='/pokemon'>No NavBar yet</Link>
             </div>
         )

@@ -28,7 +28,7 @@ export const NavbarComponent = (props:any) => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <Link to='/state/login'>Login</Link>
+              <Link to='/login'>Login</Link>
             </NavItem>
             <NavItem>
               <NavLink href="https://github.com/wsingleton/191216-react-combo">GitHub</NavLink>
@@ -42,7 +42,7 @@ export const NavbarComponent = (props:any) => {
                   <Link to='/chucknorris'>ChuckNorris</Link>
                 </DropdownItem>
                 <DropdownItem>
-                  <Link to='/state/pokemon'>Pokemon</Link>
+                  <Link to='/pokemon'>Pokemon</Link>
                 </DropdownItem>
                 <DropdownItem>
                   <Link to='/clicker'>Clicker</Link>
