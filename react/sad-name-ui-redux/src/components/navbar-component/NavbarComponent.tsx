@@ -47,6 +47,9 @@ export const NavbarComponent = (props:any) => {
                 <DropdownItem>
                   <Link to='/clicker'>Clicker</Link>
                 </DropdownItem>
+                <DropdownItem>
+                  <Link to='/starwars'>StarWars</Link>
+                </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>

@@ -2,6 +2,7 @@ import { combineReducers } from "redux";
 import { loginReducer } from "./login-reducer";
 import { pokemonReducer } from "./pokemon-reducer";
 import { clickerReducer } from "./clicker-reducer";
+import { starWarsReducer } from "./star-wars-reducer";
 
 // describe the data we want from the login component
 export interface IUserState {
@@ -18,12 +19,18 @@ export interface IClickerState {
     numClicks:number
 }
 
+export interface IStarWarsState {
+    starWarsCharacters:any[]
+    page:number
+}
+
 
 // it will containe subinterfaces that represent different parts of state
 export interface IState {
     userState : IUserState
     pokemonState: IPokemonState
     clickerState: IClickerState
+    starWarsState:IStarWarsState
 }
 
 
@@ -32,6 +39,6 @@ export interface IState {
 export const state = combineReducers<IState>({
     userState:loginReducer,
     pokemonState:pokemonReducer,
-    clickerState:clickerReducer
-
+    clickerState:clickerReducer,
+    starWarsState:starWarsReducer
 })

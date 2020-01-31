@@ -13,6 +13,7 @@ import  PokemonComponent  from './components/pokemon-component/PokemonContainer'
 import { NavbarComponent } from './components/navbar-component/NavbarComponent';
 import { Provider } from 'react-redux';
 import { store } from './Store';
+import  StarWarsComponent  from './components/star-wars-component/StarWarsContainer';
 
 //this is the root of all the components that we will make
 //two rules to being a component
@@ -35,6 +36,7 @@ const App: React.FC = () => {
         /clicker that would match '/' '/c' '/cl' '/cli' ... */}
           <Switch>
             {/* What the switch does is allow only a single route inside to be rendered at one time */}
+            <Route path='/starwars' component={StarWarsComponent}/>
             <Route path='/pokemon' component={PokemonComponent}/>
             <Route path='/login' component={LoginComponent} />
             <Route path='/chucknorris' component={ChuckNorrisComponent} />
