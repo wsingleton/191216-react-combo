@@ -4,6 +4,11 @@ import { pokemonReducer } from "./pokemon-reducer";
 import { clickerReducer } from "./clicker-reducer";
 import { starWarsReducer } from "./star-wars-reducer";
 
+
+export interface ITicTacToeState {
+    board: string[][]
+}
+
 // describe the data we want from the login component
 export interface IUserState {
     currentUser:any
