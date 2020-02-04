@@ -9,7 +9,8 @@ import { PropComponent } from './components/prop-component/PropComponent';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { LifecyleComponent } from './components/lifecycle-component/LifecycleComponent';
 import { ChuckNorrisComponent } from './components/chuck-norris-component/ChuckNorrisComponent';
-import { LoginComponent } from './components/login-component/LoginComponent';
+import { StatePassingComponent } from './components/state-passing-component/StatePassingComponent';
+import { NavbarComponent } from './components/navbar-component/NavbarComponent';
 
 const App: React.FC = () => {
   return (
@@ -22,9 +23,11 @@ const App: React.FC = () => {
               Routes by default will match inclusively
               /clicker woudl match '/' '/c' '/cl' '/cli' ... */}
 
+              <NavbarComponent/>
+
               <Switch>
                 {/* allows only a single route to be rendered */}
-              <Route path='/login' component={LoginComponent}/>
+              <Route path='/state' component={StatePassingComponent}/>
               <Route path='/chuck' component={ChuckNorrisComponent}/>
               <Route path='/second' component={SecondComponent}/>
               <Route path='/clicker' component={ClickerComponent}/>

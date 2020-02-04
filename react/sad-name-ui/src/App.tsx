@@ -42,7 +42,6 @@ const App: React.FC = () => {
           <Route path='/' component={FirstComponent} />
         </Switch>
       </Router>
-
     </div>
   );
 }

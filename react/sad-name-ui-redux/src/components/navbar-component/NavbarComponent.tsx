@@ -50,6 +50,9 @@ export const NavbarComponent = (props:any) => {
                 <DropdownItem>
                   <Link to='/starwars'>StarWars</Link>
                 </DropdownItem>
+                <DropdownItem>
+                  <Link to='/t3'>Tic Tac Toe</Link>
+                </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>

@@ -3,10 +3,13 @@ import { loginReducer } from "./login-reducer";
 import { pokemonReducer } from "./pokemon-reducer";
 import { clickerReducer } from "./clicker-reducer";
 import { starWarsReducer } from "./star-wars-reducer";
+import { t3Reducer } from "./tic-tac-toe-reducer"
 
 
 export interface ITicTacToeState {
-    board: string[][]
+    board: string[][],
+    xTurn:boolean,
+    winner:string
 }
 
 // describe the data we want from the login component
@@ -35,7 +38,8 @@ export interface IState {
     userState : IUserState
     pokemonState: IPokemonState
     clickerState: IClickerState
-    starWarsState:IStarWarsState
+    starWarsState: IStarWarsState
+    t3state: ITicTacToeState
 }
 
 
@@ -45,5 +49,6 @@ export const state = combineReducers<IState>({
     userState:loginReducer,
     pokemonState:pokemonReducer,
     clickerState:clickerReducer,
-    starWarsState:starWarsReducer
+    starWarsState:starWarsReducer,
+    t3state:t3Reducer
 })

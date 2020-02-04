@@ -1,11 +1,16 @@
 import React, { SyntheticEvent } from 'react';
 import { Form, FormGroup, Label, Col, Input, Button } from 'reactstrap';
 import { apiLogin } from '../../remote/garden-book/garden-book-clients';
+import { Link } from 'react-router-dom';
 
 interface ILoginState {
     username:string,
     password:string,
     loginMessage:string
+}
+
+interface ILoginProps {
+    updateCurrentUser: (u:string)
 }
 
 export class LoginComponent extends React.Component<any, ILoginState> {
@@ -40,11 +45,8 @@ export class LoginComponent extends React.Component<any, ILoginState> {
 
     submitLogin = async (event:SyntheticEvent) => {
         event.preventDefault();
-        let loginmessage = await apiLogin(this.state.username, this.state.password);
-        this.setState({
-            ...this.state,
-            loginMessage:loginmessage
-        })
+        this.props.updateCurrentUser(this.state.username, this.state.password);
+        
     }
 
 
@@ -80,6 +82,7 @@ export class LoginComponent extends React.Component<any, ILoginState> {
                 <Button color='info'>Login</Button>
             </Form>
             <p>{this.state.loginMessage}</p>
+            <Link to='/pokemon'>button</Link>
             </div>
         )
     }
