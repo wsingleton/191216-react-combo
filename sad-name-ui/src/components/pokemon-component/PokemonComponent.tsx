@@ -1,6 +1,6 @@
 import React from 'react';
 import { PokemonDisplayComponent } from './pokemon-display-component/PokemonDisplayComponent';
-import { getMultiplePokemon, getPokemonByUrl } from '../../remote/poke-api-clients/get-pokemon';
+import { getMultiplePokemon, getPokemonByUrl } from './get-poke';
 import { CardDeck, CardColumns } from 'reactstrap';
 
 interface IPokemonState {
