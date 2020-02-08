@@ -26,7 +26,6 @@ export class MoviesComponent extends React.Component<any, IMoviesState>{
     getMovie = async ()=>{
         let movie = await getMovie()
         this.setState({
-            ...this.state,
             currentMovie: movie
         })
     }
@@ -36,7 +35,7 @@ export class MoviesComponent extends React.Component<any, IMoviesState>{
             <div>
                 <p>This is the movie api Component Test</p>
                 <p>You have gotten this movie:</p>
-                 <img src={this.state.currentMovie}/>
+                 <img{this.state.currentMovie}/>
             </div>
         )
     }
