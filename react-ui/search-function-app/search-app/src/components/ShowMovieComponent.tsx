@@ -82,13 +82,13 @@ export class ShowMovieComponent extends React.Component<any, any>{
                         <div className='card-action'>
                             <p>
                             Year: {this.state.movie.Year} | Rated: {' '}
-                            {this.state.movie.Rated} | Runtime: {this.state.Runtime}
+                            {this.state.movie.Rated} | Runtime: {this.state.movie.Runtime}
                             </p>
                         </div>
                         <div className='card-action'>
                             <p>
                             Genre: {this.state.movie.Genre} | imbdRating:{' '}
-                            {this.state.movie.imbdRating}
+                            {this.state.movie.imdbRating}
                             </p>
                         </div>
                         <div className='card-action'>
