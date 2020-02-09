@@ -2,11 +2,12 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { MovieSearchComponent } from './components/MovieSearchComponent';
 import { ApiCallJsComponent } from './components/ApiCallJsComponent';
 import { FooterComponent } from './components/FooterComponent';
 import { render } from '@testing-library/react';
 import { ShowMovieComponent } from './components/ShowMovieComponent';
+import { LoginComponent } from './components/LoginComponent';
+import { RegisterComponent } from './components/RegisterComponent';
 
 
 
@@ -52,6 +53,7 @@ class App extends React.Component<any, IAppState> {
 
             <Route
             path={`/Movies/selected/${this.state.imdbId}`}
+            
             render={props => (
               <ShowMovieComponent
                 {...props}
@@ -60,7 +62,12 @@ class App extends React.Component<any, IAppState> {
               />
             )}
           />
-         
+          <Route
+          path='/login' component={LoginComponent}
+          />
+          <Route
+          path='/register' component={RegisterComponent}
+          />
         </Switch>
       </Router>
       <FooterComponent/>
